@@ -1,0 +1,9 @@
+{
+  "name": "version-guard",
+  "version": "1.0.0",
+  "description": "Verify and enforce use of latest stable library and package versions using live documentation lookups. Prevents outdated version recommendations, security vulnerabilities from stale dependencies, and deprecated API usage across 13+ package ecosystems.",
+  "author": {
+    "name": "zircote",
+    "email": "zircote@gmail.com"
+  }
+}
