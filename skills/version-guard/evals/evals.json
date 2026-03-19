@@ -1,0 +1,99 @@
+{
+  "skill_name": "version-guard",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I need to add React to my project. Can you give me the npm install command?",
+      "expected_output": "The skill should verify the latest React version via context7 before recommending an install command, and include a specific version number in the recommendation.",
+      "files": [],
+      "expectations": [
+        "ToolSearch was called with a query containing 'context7' to load the deferred context7 tools",
+        "mcp__context7__resolve-library-id was called with libraryName containing 'react'",
+        "mcp__context7__query-docs was called with the resolved library ID to look up version/installation info",
+        "The final response includes a specific version number for React (not just 'npm install react' without a version)",
+        "The install command uses npm install syntax with the verified version"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I'm upgrading our Flask app from 1.x to the latest version. What do I need to know?",
+      "expected_output": "The skill should look up the current Flask version, provide the verified latest version, and flag breaking changes between Flask 1.x and the current major version.",
+      "files": [],
+      "expectations": [
+        "context7 tools were loaded via ToolSearch before library resolution",
+        "mcp__context7__resolve-library-id was called for Flask",
+        "mcp__context7__query-docs was called to retrieve current version and migration/changelog info",
+        "The response includes a specific verified latest stable version number for Flask",
+        "The response identifies at least one breaking change or migration concern when upgrading from Flask 1.x",
+        "The response references or recommends consulting migration documentation"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Set up a new Rust project with serde, tokio, and reqwest as dependencies. Show me the Cargo.toml.",
+      "expected_output": "The skill should verify the latest version of each library individually and produce a Cargo.toml with specific verified version numbers for all three crates.",
+      "files": [],
+      "expectations": [
+        "context7 tools were loaded via ToolSearch",
+        "mcp__context7__resolve-library-id was called for serde (or serde_json)",
+        "mcp__context7__resolve-library-id was called for tokio",
+        "mcp__context7__resolve-library-id was called for reqwest",
+        "The output Cargo.toml contains specific version numbers for all three dependencies, not wildcard or missing versions",
+        "Each version number was sourced from context7 query-docs results, not training data alone"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "What version of some-nonexistent-library-xyz-999 should I use for my Python project?",
+      "expected_output": "The skill should attempt context7 resolution, fail, and then fall back to web search or package registry lookup. It should clearly state the source of its answer or that it could not verify the version.",
+      "files": [],
+      "expectations": [
+        "context7 tools were loaded via ToolSearch",
+        "mcp__context7__resolve-library-id was attempted for the nonexistent library",
+        "After context7 fails to resolve, a fallback strategy is used (web search, package registry check, or explicit statement that the library could not be found)",
+        "The response does NOT fabricate a version number without citing a source",
+        "The response clearly states the source of any version information or acknowledges the library could not be verified"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "I have this requirements.txt file:\nDjango==3.2\ncelery==4.4.0\nredis==3.5.0\n\nCan you audit these and tell me if they're current?",
+      "expected_output": "The skill should verify each dependency against its latest stable version and report which are outdated, including the current latest version for each.",
+      "files": [],
+      "expectations": [
+        "context7 tools were loaded via ToolSearch",
+        "Version lookups were performed for Django, celery, and redis (via resolve-library-id and query-docs)",
+        "The response identifies specific latest stable versions for each of the three packages",
+        "The response clearly indicates which packages are outdated compared to the versions in the requirements.txt",
+        "For Django specifically, the response flags that 3.2 is not the latest and mentions the current latest version"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Add axios to my package.json and write a quick fetch example",
+      "expected_output": "The skill should verify the latest axios version before writing the package.json entry and code example, using the verified version in both.",
+      "files": [],
+      "expectations": [
+        "context7 tools were loaded via ToolSearch",
+        "mcp__context7__resolve-library-id was called for axios",
+        "mcp__context7__query-docs was called to get current version and API usage info",
+        "The package.json entry includes a specific version number (not 'latest' or '*')",
+        "The code example uses import/require syntax consistent with the verified version's API"
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "What's the latest stable Go version and what version of gin-gonic/gin should I use with it?",
+      "expected_output": "The skill should verify both the Go language version and the gin framework version via context7, providing specific verified version numbers for each.",
+      "files": [],
+      "expectations": [
+        "context7 tools were loaded via ToolSearch",
+        "mcp__context7__resolve-library-id was called for gin (gin-gonic/gin)",
+        "mcp__context7__query-docs was called to retrieve gin version and compatibility info",
+        "The response includes a specific verified version number for gin",
+        "The response provides a go get or go.mod compatible dependency declaration with the verified version",
+        "If the verified version differs from what training data would suggest, the response notes this explicitly"
+      ]
+    }
+  ]
+}

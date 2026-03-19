@@ -1,0 +1,71 @@
+[
+  { "query": "What version of React should I use?", "should_trigger": true },
+  {
+    "query": "npm install express — what's the latest?",
+    "should_trigger": true
+  },
+  {
+    "query": "Add pandas and numpy to my requirements.txt",
+    "should_trigger": true
+  },
+  {
+    "query": "I need to upgrade our Django app from 3.2 to the latest version",
+    "should_trigger": true
+  },
+  {
+    "query": "Set up a new Cargo.toml with serde and tokio",
+    "should_trigger": true
+  },
+  {
+    "query": "pip install tensorflow — is 2.12 still current?",
+    "should_trigger": true
+  },
+  {
+    "query": "Write me a package.json for a new Node project with fastify and prisma",
+    "should_trigger": true
+  },
+  {
+    "query": "What's the latest stable version of Go?",
+    "should_trigger": true
+  },
+  {
+    "query": "cargo add clap — which version has the derive feature?",
+    "should_trigger": true
+  },
+  {
+    "query": "Can you audit my go.mod and check if my dependencies are outdated?",
+    "should_trigger": true
+  },
+
+  {
+    "query": "Explain what dependency injection means",
+    "should_trigger": false
+  },
+  { "query": "Write a fizzbuzz function in Python", "should_trigger": false },
+  { "query": "How do I center a div with CSS?", "should_trigger": false },
+  {
+    "query": "What is the difference between TCP and UDP?",
+    "should_trigger": false
+  },
+  {
+    "query": "Help me debug this segfault in my C code",
+    "should_trigger": false
+  },
+  {
+    "query": "Create a SQL query to join these two tables",
+    "should_trigger": false
+  },
+  {
+    "query": "What design pattern should I use for this notification system?",
+    "should_trigger": false
+  },
+  {
+    "query": "Refactor this function to reduce cyclomatic complexity",
+    "should_trigger": false
+  },
+  {
+    "query": "Write unit tests for my calculator class",
+    "should_trigger": false
+  },
+  { "query": "How does git rebase work?", "should_trigger": false }
+]
