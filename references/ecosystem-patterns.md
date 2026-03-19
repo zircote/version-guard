@@ -30,9 +30,20 @@ When resolving libraries via context7, use these naming conventions:
 
 ## Common Version Verification Queries
 
-Use these query patterns with `query-docs` to find version info:
+Use these query patterns with `query-docs` to find version info. **Always run at least two
+queries** — version numbers often appear in changelogs or release notes rather than getting-started
+pages:
 
+**Primary (always run):**
 - `"latest version installation getting started"`
-- `"changelog release notes what's new"`
+- `"changelog release notes version what's new"`
+
+**Secondary (for migration/upgrade scenarios):**
 - `"migration guide upgrade breaking changes"`
 - `"installation setup quickstart"`
+
+**Tips for extracting versions from context7 results:**
+- Look for version numbers in code snippets (e.g., `require "~> 1.2"`, `"version": "3.1.0"`)
+- Check badge URLs or shields.io references in docs
+- Scan changelog headings (e.g., `## 1.0.228 (2026-01-15)`)
+- Look at `Cargo.toml`, `package.json`, or `go.mod` examples in the docs
